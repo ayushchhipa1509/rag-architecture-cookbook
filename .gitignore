@@ -1,0 +1,28 @@
+# Environments
+.env
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Vector DBs
+chroma_db/
+chroma/
+vector_store/
+
+# Graph DBs
+graph_db/
+neo4j_data/
+*.db
+
+# Build & Dist
+dist/
+build/
+*.egg-info/
+
+# OS
+.DS_Store
+Thumbs.db
