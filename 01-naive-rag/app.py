@@ -9,7 +9,6 @@ import streamlit as st
 import os
 import sys
 import shutil
-import tempfile
 
 # Add project root to path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -147,6 +146,8 @@ with st.sidebar:
                     st.session_state.indexed = True
                     st.success(f"✅ Indexed {len(docs)} page(s) → {len(chunks)} chunks")
             except Exception as e:
+                st.session_state.indexed = False
+                st.session_state.rag_chain = None
                 st.error(f"❌ Error: {e}")
 
     st.divider()

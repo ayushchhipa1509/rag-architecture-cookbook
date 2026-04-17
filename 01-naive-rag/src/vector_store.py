@@ -45,9 +45,9 @@ def load_vector_store(embedding_model=None) -> Chroma:
     Raises:
         FileNotFoundError: If no vector store exists on disk.
     """
-    if not os.path.exists(CHROMA_DIR):
+    if not os.path.exists(CHROMA_DIR) or not os.listdir(CHROMA_DIR):
         raise FileNotFoundError(
-            f"No vector store found at {CHROMA_DIR}. "
+            f"No valid vector store found at {CHROMA_DIR}. "
             "Please index documents first."
         )
 

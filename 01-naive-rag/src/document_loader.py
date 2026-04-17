@@ -31,15 +31,18 @@ def load_documents(directory: str = None) -> list:
     for filename in os.listdir(directory):
         filepath = os.path.join(directory, filename)
 
-        if filename.lower().endswith(".pdf"):
-            print(f"📄 Loading PDF: {filename}")
-            loader = PyPDFLoader(filepath)
-            documents.extend(loader.load())
+        try:
+            if filename.lower().endswith(".pdf"):
+                print(f"📄 Loading PDF: {filename}")
+                loader = PyPDFLoader(filepath)
+                documents.extend(loader.load())
 
-        elif filename.lower().endswith(".txt"):
-            print(f"📝 Loading TXT: {filename}")
-            loader = TextLoader(filepath, encoding="utf-8")
-            documents.extend(loader.load())
+            elif filename.lower().endswith(".txt"):
+                print(f"📝 Loading TXT: {filename}")
+                loader = TextLoader(filepath, encoding="utf-8")
+                documents.extend(loader.load())
+        except Exception as e:
+            print(f"⚠️  Skipping {filename}: {e}")
 
     print(f"✅ Loaded {len(documents)} document page(s) from {directory}")
     return documents

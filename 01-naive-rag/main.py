@@ -94,7 +94,10 @@ def main():
     args = parser.parse_args()
 
     if args.index:
-        index_documents()
+        result = index_documents()
+        if result is None:
+            print("\n⚠️  Indexing failed or no documents found. Fix the issue and try again.")
+            return
 
     query_loop()
 

@@ -3,8 +3,8 @@ RAG Chain — wires the retriever + Groq LLM into a question-answering chain.
 """
 
 from langchain_groq import ChatGroq
-from langchain.chains import RetrievalQA
-from langchain.prompts import PromptTemplate
+from langchain_classic.chains import RetrievalQA
+from langchain_core.prompts import PromptTemplate
 from src.config import GROQ_API_KEY, LLM_MODEL_NAME, LLM_TEMPERATURE
 
 
@@ -34,7 +34,7 @@ def get_llm() -> ChatGroq:
     Returns:
         ChatGroq model instance.
     """
-    if not GROQ_API_KEY or GROQ_API_KEY == "your_groq_api_key_here":
+    if not GROQ_API_KEY or GROQ_API_KEY in ("your_groq_api_key_here", "gsk_your_groq_key_here", "gsk_your_key_here"):
         raise ValueError(
             "❌ GROQ_API_KEY not set! "
             "Please add your key to the .env file.\n"
